@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{%extends 'base.html' %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container-fluid w-50 mx-auto">
+  <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" class="form-control" name="t" value="{{k.title}}">
+  </div>
+  <div class="mb-3">
+  <label class="form-label">Description</label>
+  <textarea class="form-control" rows="3" name="d">{{k.description}}</textarea>
+</div>
+  <div class="mb-3">
+    <label class="form-label">Languages</label>
+    <input type="text" class="form-control" name="l" value="{{k.language}}">
+  </div>
+   <div class="mb-3">
+    <label class="form-label">Year</label>
+    <input type="number" class="form-control" name="y" value="{{k.year}}">
+  </div>
+   <div class="mb-3">
+    <label class="form-label">Image</label>
+     <img src="{{k.image.url}}" height="100px" width="100px">
+    <input type="file" class="form-control" name="i" >
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}
