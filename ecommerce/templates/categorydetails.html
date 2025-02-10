@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block bg %}
+<div class="hero-area" style="background-image: url('{{k.image.url}}');">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 offset-lg-2 text-center">
+					<div class="hero-text">
+						<div class="hero-text-tablecell">
+							<h1>{{k.name}}</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block content %}
+
+<!-- product section -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">
+						<h3><span class="orange-text">Our</span> Products</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+					</div>
+				</div>
+			</div>
+
+            <div class="row">
+                {% for i in k.products.all %}
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{i.image.url}}" height="200px" alt=""></a>
+						</div>
+						<h3>{{i.name}}</h3>
+                        <h3>{{i.price}}</h3>
+                        <a href="{% url 'shop:productdetails' i.id %}" class="cart-btn">Details</a>
+
+					</div>
+				</div>
+                 {% endfor %}
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}

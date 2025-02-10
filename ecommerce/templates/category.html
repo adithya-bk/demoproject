@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-center mt-3">Our Collections</h2>
+<p>Welcome to [Your Store Name], your one-stop destination for quality, convenience, and style! We offer a vast range of products, from the latest fashion trends and cutting-edge tech to home essentials and unique gifts. Our easy-to-navigate online store ensures a smooth shopping experience, with secure payment options and fast, reliable shipping. Whether you're searching for something special or just browsing, we make online shopping a breeze with top-notch customer service and unbeatable prices. Explore, shop, and discover something you'll love today!</p>
+
+<!-- product section -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">
+						<h3><span class="orange-text">Our</span> Products</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+					</div>
+				</div>
+			</div>
+
+            <div class="row">
+                {% for i in key %}
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{i.image.url}}" height="200px" alt=""></a>
+						</div>
+						<h3>{{i.name}}</h3>
+						<a href="{% url 'shop:categorydetails' i.id %}" class="cart-btn">Shop Now</a>
+					</div>
+				</div>
+                 {% endfor %}
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}

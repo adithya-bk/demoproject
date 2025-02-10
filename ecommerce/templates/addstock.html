@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block bg %}
+
+
+<!--	<div class="hero-area" style="background-image: url('{% static 'img/dark.jpg' %}');">-->
+<!--		<div class="container">-->
+<!--			<div class="row">-->
+<!--				<div class="col-lg-9 offset-lg-2 text-center">-->
+<!--					<div class="hero-text">-->
+<!--						<div class="hero-text-tablecell">-->
+<!--							<p class="subtitle">Welcome to {{n.name}}</p>-->
+<!--							<h1>Product Details</h1>-->
+<!--							<div class="hero-btns">-->
+<!--								<a href="shop.html" class="boxed-btn">Fruit Collection</a>-->
+<!--								<a href="contact.html" class="bordered-btn">Contact Us</a>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	&lt;!&ndash; end hero area &ndash;&gt;-->
+<div class="h-25 bg-dark"></div>
+
+{% endblock %}
+{% block content %}
+<div class="container mt-5 border border-dark mb-5">
+    <h1>Update Stock</h1>
+<form method="POST">
+  {% csrf_token %}
+<table>
+  {{form.as_table}}
+</table>
+<button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</div>
+{% endblock %}

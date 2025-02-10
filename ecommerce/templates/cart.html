@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block bg %}
+
+<!--	<div class="hero-area" style="background-image: url('{% static 'img/dark.jpg' %}');">-->
+<!--		<div class="container">-->
+<!--			<div class="row">-->
+<!--				<div class="col-lg-9 offset-lg-2 text-center">-->
+<!--					<div class="hero-text">-->
+<!--						<div class="hero-text-tablecell">-->
+<!--							<p class="subtitle">Welcome to {{n.name}}</p>-->
+<!--							<h1>Product Details</h1>-->
+<!--							<div class="hero-btns">-->
+<!--								<a href="shop.html" class="boxed-btn">Fruit Collection</a>-->
+<!--								<a href="contact.html" class="bordered-btn">Contact Us</a>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	&lt;!&ndash; end hero area &ndash;&gt;-->
+<div class="h-25 bg-dark"></div>
+{% endblock %}
+
+
+{% block content %}
+<div class="cart-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									<th class="product-image">Product Image</th>
+									<th class="product-name">Name</th>
+									<th class="product-price">Price</th>
+									<th class="product-quantity">Quantity</th>
+									<th>Subtotal</th>
+									<th>Operations</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for i in cart %}
+								<tr class="table-body-row">
+									<td class="product-image"><img src="{{i.product.image.url}}" alt=""></td>
+									<td class="product-name">{{i.product.name}}</td>
+									<td class="product-price">{{i.product.price}}</td>
+									<td class="product-quantity">{{i.quantity}}</td>
+									<td>{{i.subtotal}}</td>
+									<td>
+									{% if i.product.stock > 0 %}
+									<a href="{% url 'cart:addtocart' i.product.id %}"><i class="fa-regular fa-square-plus m-2"></i></a><a href="{% url 'cart:cartdecrement' i.product.id %}"><i class="fa-regular fa-square-minus "></i></a><a href="{% url 'cart:cartdelete' i.product.id %}"><i class="fa-regular fa-trash-can m-2"></i></a>
+									{% else %}
+									<a href="{% url 'cart:cartdecrement' i.product.id %}"><i class="fa-regular fa-square-minus m-2"></i></a><a href="{% url 'cart:cartdelete' i.product.id %}"><i class="fa-regular fa-trash-can m-2"></i></a>
+									{% endif %}
+									</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="total-section">
+						<table class="total-table">
+							<thead class="total-table-head">
+								<tr class="table-total-row">
+									<th>Total</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="total-data">
+									<td><strong>Total: </strong></td>
+									<td>{{total}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="cart-buttons">
+							<a href="{% url 'cart:orderform' %}" class="boxed-btn">Place Order</a>
+							<a href="checkout.html" class="boxed-btn black">Continue Shopping</a>
+						</div>
+					</div>
+
+					<div class="coupon-section">
+						<h3>Apply Coupon</h3>
+						<div class="coupon-form-wrap">
+							<form action="index.html">
+								<p><input type="text" placeholder="Coupon"></p>
+								<p><input type="submit" value="Apply"></p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

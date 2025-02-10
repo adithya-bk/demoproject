@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block bg %}
+
+<!--	<div class="hero-area" style="background-image: url('{% static 'img/dark.jpg' %}');">-->
+<!--		<div class="container">-->
+<!--			<div class="row">-->
+<!--				<div class="col-lg-9 offset-lg-2 text-center">-->
+<!--					<div class="hero-text">-->
+<!--						<div class="hero-text-tablecell">-->
+<!--							<p class="subtitle">Welcome to {{n.name}}</p>-->
+<!--							<h1>Product Details</h1>-->
+<!--							<div class="hero-btns">-->
+<!--								<a href="shop.html" class="boxed-btn">Fruit Collection</a>-->
+<!--								<a href="contact.html" class="bordered-btn">Contact Us</a>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	&lt;!&ndash; end hero area &ndash;&gt;-->
+<div class="h-25 bg-dark"></div>
+
+{% endblock %}
+{% block content %}
+<!-- single product -->
+	<div class="single-product mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="single-product-img">
+						<img src="{{n.image.url}}" alt="">
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="single-product-content">
+						<h3>{{n.name}}</h3>
+						<p class="single-product-pricing">₹{{n.price}}</p>
+                        <p>Available Stock:{{n.stock}}</p>
+                        <p>{{n.description}}</p>
+						<div class="single-product-form">
+							<form action="index.html">
+								<input type="number" placeholder="0">
+							</form>
+							{% if user.is_superuser %}
+								{% if n.stock > 0 %}
+									<p class="text-success">Product In Stock</p>
+									<a href="{% url 'shop:addstock' n.id %}" class="btn btn-primary">Add Stock</a>
+								{% else %}
+									<p class="text-danger">Product Out of Stock</p>
+									<a href="{% url 'shop:addstock' n.id %}" class="btn btn-primary">Add Stock</a>
+								{% endif %}
+							{% else %}
+								{% if n.stock > 0 %}
+									<a href="{% url 'cart:addtocart' n.id %}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+								{% else %}
+									<p class="text-danger">Product Out of Stock</p>
+								{% endif %}
+							{% endif %}
+
+
+							<p><strong>Categories: </strong>Fruits, Organic</p>
+						</div>
+						<h4>Share:</h4>
+						<ul class="product-share">
+							<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href=""><i class="fab fa-twitter"></i></a></li>
+							<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+							<li><a href=""><i class="fab fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end single product -->
+
+{% endblock %}

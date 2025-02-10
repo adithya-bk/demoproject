@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block bg %}
+
+
+<!--	<div class="hero-area" style="background-image: url('{% static 'img/dark.jpg' %}');">-->
+<!--		<div class="container">-->
+<!--			<div class="row">-->
+<!--				<div class="col-lg-9 offset-lg-2 text-center">-->
+<!--					<div class="hero-text">-->
+<!--						<div class="hero-text-tablecell">-->
+<!--							<p class="subtitle">Welcome to {{n.name}}</p>-->
+<!--							<h1>Product Details</h1>-->
+<!--							<div class="hero-btns">-->
+<!--								<a href="shop.html" class="boxed-btn">Fruit Collection</a>-->
+<!--								<a href="contact.html" class="bordered-btn">Contact Us</a>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	&lt;!&ndash; end hero area &ndash;&gt;-->
+<div class="h-25 bg-dark"></div>
+
+{% endblock %}
+{% block content %}
+<div class="container mt-5 border border-dark">
+<form method="POST">
+    {% csrf_token %}
+    <div class="container border border-3px mt-5 mb-5">
+        <h2>Billing Details.</h2>
+<div class="mb-3">
+    <label class="form-label">Address</label>
+    <input type="text" class="form-control" name="a">
+  </div>
+<div class="mb-3">
+    <label class="form-label">Pin</label>
+    <input type="number" class="form-control" name="pin">
+  </div>
+        <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input type="number" class="form-control" name="ph">
+  </div>
+<div class="mb-3">
+    <input type="submit" class="btn btn-info">
+</div>
+    </div>
+    </form>
+</div>
+{% endblock %}

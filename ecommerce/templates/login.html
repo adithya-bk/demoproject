@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5 border border-dark">
+<form method="POST">
+    {% csrf_token %}
+    <div class="container border border-3px mt-5 mb-5">
+<div class="mb-3">
+    <label class="form-label">Username</label>
+    <input type="text" class="form-control" name="u">
+  </div>
+<div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" name="p">
+  </div>
+<div class="mb-3">
+    <input type="submit" class="btn btn-info">
+</div>
+    </div>
+    </form>
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

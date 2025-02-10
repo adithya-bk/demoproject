@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% if key %}
+ <div class="row">
+                {% for i in key %}
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{i.image.url}}" height="200px" alt=""></a>
+						</div>
+						<h3>{{i.name}}</h3>
+                        <h3>{{i.price}}</h3>
+                        <a href="{% url 'shop:productdetails' i.id %}" class="cart-btn">Details</a>
+
+					</div>
+				</div>
+                 {% endfor %}
+            </div>
+{% else %}
+	<h2>No Results Found!!!!</h2>
+{% endif %}
+{% endblock %}
