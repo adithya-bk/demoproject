@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="text-center">Add School Details...</h3>
+<form method="POST">
+  {% csrf_token %}
+  <table>
+  {{form.as_table}}
+    </table>
+  <input type="submit">
+</form>
+
+{% endblock %}

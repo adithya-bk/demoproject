@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<h1>School List</h1>
+
+<ol>
+    {% for i in key %}
+    <li>
+    <a href="{% url 'detail' i.id %}">{{i.name}}</a>
+    </li>
+    {% endfor %}
+</ol>
+{% endblock %}

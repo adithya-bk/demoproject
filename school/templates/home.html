@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="text-center">Welcome to School App</h3>
+<h1>Welcome to Home Page,
+    {% if user.is_authenticated %}
+    {{user.username}}
+    {% else %}
+    Guest
+    {% endif %}</h1>
+{% endblock %}
