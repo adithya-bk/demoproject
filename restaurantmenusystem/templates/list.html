@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center mb-5 mt-2">ITEMS</h1>
+<ul class="list-group w-50">
+  {% for i in m %}
+  <li class="list-group-item fw-bold fs-4">{{i.name}}</li>
+  {% for x in i.menu.all %}
+  <li class="list-group-item">Name:{{x.name}}</li>
+    <li class="list-group-item">Price:{{x.price}}</li>
+  {% endfor %}
+    {% endfor %}
+</ul>
+{% endblock %}
